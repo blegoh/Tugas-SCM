@@ -11,6 +11,12 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Product::class, 50)->create();
+        factory(App\Models\Product::class, 50)->create()
+            ->each(function($u) {
+                \App\Models\Receiving::create([
+                    'product_id' => $u->id,
+                    'quantity' => 50
+                ]);
+            });;
     }
 }

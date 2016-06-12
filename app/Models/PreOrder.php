@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class PreOrder extends Model
 {
@@ -18,6 +19,11 @@ class PreOrder extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function scopeThisMonth($query)
+    {
+        return $query->where(DB::raw('month(created_at) = month(now()) AND year(created_at) = year(now())'));
     }
 
 }

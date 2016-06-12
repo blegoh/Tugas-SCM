@@ -19,4 +19,27 @@ class Product extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function productsInSale()
+    {
+        return $this->hasMany(SaleDetail::class);
+    }
+
+    public function productsInPreOrder()
+    {
+        return $this->hasMany(PreOrder::class);
+    }
+
+    public function productInReceiving()
+    {
+        return $this->hasMany(Receiving::class);
+    }
+
+    public function stock()
+    {
+        $receving = $this->productInReceiving()->sum('quantity');
+        $sale = $this->productsInSale()->sum('quantity');
+        return $receving-$sale;
+    }
+
 }

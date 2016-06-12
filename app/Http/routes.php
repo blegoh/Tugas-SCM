@@ -30,6 +30,8 @@ Route::resource('preorder','PreOrderController');
 
 Route::resource('sale','SaleController',['only' => ['index','store']]);
 
+Route::get('priority','PriorityController@index');
+
 Route::group(['prefix' => 'api'], function(){
     Route::get('product','ProductController@indexAPI');
     Route::get('saletemp','SaleController@indexAPI');

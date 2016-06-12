@@ -32,7 +32,7 @@ $factory->define(App\Models\Supplier::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->company,
-        'price' => $faker->randomNumber(5),
+        'price' => $faker->randomNumber(6),
         'supplier_id' => $faker->numberBetween(1,5),
     ];
 });
