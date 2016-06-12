@@ -22,6 +22,7 @@ class PriorityController extends Controller
             $item = "['".$product->name."', $value, 'color: green'],";
             $chart .= $item;
         }
+        $chart = substr($chart,0,strlen($chart-1));
         return view('priority.index',compact('chart'));
     }
 
