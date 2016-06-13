@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Demand;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,11 +20,17 @@ class PriorityController extends Controller
             $priceProduct = $this->getProductPriceScore($product->price);
             $stockProduct = $this->getStockScore($product->stock());
             $value = $saledProduct + $orderedProduct + $priceProduct + $stockProduct;
-            $item = "['".$product->name."', $value, 'color: green'],";
+            $item = "['".addslashes($product->name)."', $value, 'color: green'],";
             $chart .= $item;
         }
-        $chart = substr($chart,0,strlen($chart-1));
-        return view('priority.index',compact('chart'));
+        $chart = substr($chart,0,strlen($chart)-1);
+        return view('priority.index',compact('chart','products'));
+    }
+
+    public function add(Request $request)
+    {
+        Demand::create($request->all());
+        return redirect('priority');
     }
 
     private function getSaledProductScore($saledProduct)
