@@ -54,6 +54,7 @@
                         <li><a href="{{ url('/sale') }}">Sale</a></li>
                         <li><a href="{{ url('/preorder') }}">Pre Order</a></li>
                         <li><a href="{{ url('/receiving') }}">Receiving</a></li>
+                        <li><a href="{{ url('/priority') }}">Priority</a></li>
                     @endif
                 </ul>
 

@@ -23,7 +23,7 @@
                             <td>{{$preOrder->product->name}}</td>
                             <td>{{$preOrder->quantity}}</td>
                             <td>
-                                <a href="{{url('preorder/'.$preOrder->id)}}" class="btn btn-info">Detail</a>
+                                <a href="{{url('preorder/'.$preOrder->id.'/edit')}}" class="btn btn-info">Edit</a>
                                 <div>
                                     <form action="{{url('preorder/'.$preOrder->id)}}" method="post">
                                         {{ csrf_field() }}
